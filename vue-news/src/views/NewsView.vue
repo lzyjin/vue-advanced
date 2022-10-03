@@ -40,6 +40,7 @@ export default {
     }
   },
   created() {
+
     fetchNewsList()
         .then(response => {
           console.log(response);

@@ -11,10 +11,18 @@ function fetchNewsList() {
     // return axios.get(config.baseUrl + 'news/1.json');
     return axios.get(`${config.baseUrl}news/1.json`);
 }
+function fetchJobList() {
+    return axios.get(`${config.baseUrl}jobs/1.json`);
+}
+function fetchAskList() {
+    return axios.get(`${config.baseUrl}ask/1.json`);
+}
 
 // 3. API 함수를 export(현재 이 파일의 외부에서 사용할 수 있게)
 export {
-    fetchNewsList
+    fetchNewsList,
+    fetchJobList,
+    fetchAskList
 }
 
 
