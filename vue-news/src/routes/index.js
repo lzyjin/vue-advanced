@@ -9,7 +9,8 @@ import UserView from "@/views/UserView";
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
-    mode:'history',
+    // mode history는 url에 #(해쉬값)이 붙지 않도록 함
+    // mode:'history',
     routes: [
         {
             path: '/',

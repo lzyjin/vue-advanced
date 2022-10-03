@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <tool-bar></tool-bar>
+    <!-- RouterView는 -->
+    <!-- url이 만약 /news 이면 NewsView로 -->
+    <!-- url이 만약 /jobs 이면 JobsView로 랜더링된다. -->
     <router-view></router-view>
   </div>
 </template>
@@ -28,7 +31,7 @@ export default {
 </script>
 
 <style>
-//reset css
+/*reset css*/
 *, *::before, *::after {
   padding: 0;
   margin: 0;
