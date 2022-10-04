@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise</title>
+</head>
+<body>
+     <div>jquery ajax</div>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script>
+         function callAjax() {
+             return new Promise(function (resolve, reject) {
+                 $.ajax({
+                     url: 'https://api.hnpwa.com/v0/news/1.json',
+                     success: function(data) {
+                         resolve(data);
+                     }
+                 });
+             });
+         }
+
+        function fetchData() {
+            // 1
+            var result = [];
+
+            // 2
+            callAjax()
+                .then(data => {
+                    console.log('데이터 호출 결과', data); // 데이터 호출 결과 (30) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+                    result = data;
+                    console.log('함수 결과', result); // 함수 결과 (30) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+                })
+                .then()
+                .catch();
+
+            // 3
+            // console.log('함수 결과', result); // 함수 결과 [] (더 먼저 출력됌)
+        }
+
+        fetchData();
+     </script>
+</body>
+</html>

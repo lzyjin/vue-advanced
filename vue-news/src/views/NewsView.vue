@@ -39,8 +39,13 @@ export default {
       newses: []
     }
   },
-  created() {
 
+  beforeCreate() {
+    console.log('beforeCreate');
+  },
+  created() {
+    // created는 data가 다 준비된 상태로 컴포넌트가 보여지게될 때 (화면에 나타나기 전)
+    // 자바스크립트 상으로만 존재함
     fetchNewsList()
         .then(response => {
           console.log(response);
@@ -48,6 +53,28 @@ export default {
         })
         .catch(error => console.error(error));
   },
+  beforeMount() {
+    console.log('beforeMount');
+  },
+  mounted() {
+    // mounted는 컴포넌트가 화면에 나타난 후
+    // 화면에 존재함
+    console.log('mounted');
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate');
+  },
+  updated() {
+    // updated는 화면의 데이터가 바뀌어서 화면이 다시 그려질 때
+    console.log('updated');
+  },
+  beforeDestroy() {
+    console.log('beforeDestroy');
+  },
+  destroyed() {
+    // destroyed는 컴포넌트가 화면에서 사라질 때
+    console.log('destroyed');
+  }
 }
 
 </script>
