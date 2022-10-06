@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-for="news in newses" v-bind:key="news.id">{{ news.title }}</div>
+<!--    <div v-for="news in newses" v-bind:key="news.id">{{ news.title }}</div>-->
+    <div v-for="news in this.$store.state.news" v-bind:key="news.id">{{ news.title }}</div>
   </div>
 </template>
 
@@ -32,27 +33,48 @@
 // }
 
 // --- api 폴더로 분리 후
-import {fetchNewsList} from "@/api/index.js";
+// import {fetchNewsList} from "@/api/index.js";
 export default {
+  // vuex 사용 후 (newses 데이터는 필요 없어짐)
+  /*
   data() {
     return {
       newses: []
     }
   },
+  */
+
 
   beforeCreate() {
     console.log('beforeCreate');
   },
   created() {
+
+    // vuex 사용 후
+    this.$store.dispatch('FETCH_NEWS');
+    // this는 vue 자체
+
+
+    // vuex 사용 전
+    /*
     // created는 data가 다 준비된 상태로 컴포넌트가 보여지게될 때 (화면에 나타나기 전)
     // 자바스크립트 상으로만 존재함
+    // 1)
     fetchNewsList()
         .then(response => {
           console.log(response);
+          // 2)
           this.newses = response.data;
         })
         .catch(error => console.error(error));
+    */
+
   },
+
+
+
+
+
   beforeMount() {
     console.log('beforeMount');
   },
