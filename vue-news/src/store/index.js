@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { fetchNewsList } from "@/api";
+import mutations from "@/store/mutations";
+import actions from "@/store/actions";
 
 /**
  * vuex를 왜 사용할까?
@@ -12,44 +13,29 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   // state: vue 컴포넌트의 data와 같음
   state: {
-    news: []
+    news: [],
+    jobs: [],
+    asks: [],
   },
 
   // mutations: 자바로 치면 setter(값을 바꿔준다)
-  mutations: {
-    SET_NEWS(state, news) {
-      state.news = news;
-    }
-  },
+  // mutations: mutations,
+    mutations,
 
-  // getters: getter
+  // getters: computed와 동일한 속성인데 store에 있는 거라고 생각하자
   getters:{
     getNews(state){
       return state.news;
+    },
+    getAsks(state) {
+      return state.asks;
     }
   },
 
   // actions: api 통신하는 곳
-  actions: {
-    // 아래 코드를 이렇게 적을 수 있다.
-    // fetchNews({commit}){
-    //
-    // },
-    FETCH_NEWS(context) {
-      fetchNewsList()
-          .then( response => {
-            console.log(response.data);
+  // actions: actions,
+    actions,
 
-            // mutations에 데이터를 넘김
-            context.commit('SET_NEWS', response.data);
 
-            // 이렇게 쓸 수 없음
-            // state.news = response.data;
-          } )
-          .catch(err => {
-            console.log(err);
-          })
-    }
-  },
 });
 

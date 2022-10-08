@@ -1,6 +1,6 @@
 <template>
   <div>
-<!--    <div v-for="news in newses" v-bind:key="news.id">{{ news.title }}</div>-->
+    <!--<div v-for="news in newses" v-bind:key="news.id">{{ news.title }}</div>-->
     <div v-for="news in this.$store.state.news" v-bind:key="news.id">{{ news.title }}</div>
   </div>
 </template>
