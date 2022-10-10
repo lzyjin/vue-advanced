@@ -11,14 +11,20 @@
     <!-- 2 -->
     <!--<div v-for="ask in asks" v-bind:key="ask.id">{{ask.title}}</div>-->
     <!-- 3 -->
-    <div v-for="ask in askItems" v-bind:key="ask.id">{{ask.title}}</div>
+    <!--<div v-for="ask in askItems" v-bind:key="ask.id">{{ask.title}}</div>-->
+
+    <p class="item" v-for="ask in getAsks" :key="ask.id">
+      <a :href="ask.url">{{ ask.title }}</a>
+      <span>{{ ask.user }}</span>
+    </p>
 
   </div>
 </template>
 
 <script>
 // import {fetchAskList} from "@/api";
-// import { mapState, mapGetters } from 'vuex';
+// import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: "AskView",
@@ -45,9 +51,9 @@ export default {
     //   askItems: 'getAsks',
     // })
     // 또는
-    // ...mapGetters([
-    //   'getAsks',
-    // ])
+    ...mapGetters([
+      'getAsks',
+    ])
   },
   created() {
     // fetchAskList()

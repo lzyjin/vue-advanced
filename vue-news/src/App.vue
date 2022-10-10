@@ -42,4 +42,9 @@ html, body {
   padding: 0;
   box-sizing: border-box;
 }
+
+p.item { padding: 30px; border: 1px solid #ddd; border-radius: 10px; margin: 20px; }
+p.item a { display: block; color: #333; text-decoration: none; font-size: 18px; margin-bottom: 10px; }
+p.item a:hover { text-decoration: underline; }
+p.item span { font-size: 16px; color: #555; display: inline-block; margin-right: 15px; }
 </style>
