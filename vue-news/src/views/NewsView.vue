@@ -7,7 +7,8 @@
       <a v-bind:href="item.url">
         {{ item.title }}
       </a>
-      <span>by {{ item.user }}</span>
+      <!--<span>by <router-link v-bind:to="'/user/' + item.user">{{ item.user }}</router-link></span>-->
+      <span>by <router-link v-bind:to="`/user/${item.user}`">{{ item.user }}</router-link></span>
       <span>{{ item.time_ago }}</span>
     </p>
   </div>
@@ -54,9 +55,12 @@ export default {
 
 
   beforeCreate() {
+    // 인스턴스가 초기화 된 직후,
     console.log('beforeCreate');
   },
   created() {
+    // 인스턴스가 생성된 후,
+
 
     // vuex 사용 후
     this.$store.dispatch('FETCH_NEWS');

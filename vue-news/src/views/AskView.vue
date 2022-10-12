@@ -40,13 +40,16 @@ export default {
     // }
 
     // 2
-    // ??????? 이 내용이랑 이 문법을 모르겠다.
+    // mapState 헬퍼 사용
+    // mapState는 객체를 반환한다.
+    // ...은 객체 전대 연산자(Object Spread Operator)
+    // https://v3.vuex.vuejs.org/kr/guide/state.html
     // ...mapState({
     //   asks: state => state.asks,
     // }),
 
     // 3
-    // store의 getters 사용
+    // mapGetters 헬퍼 사용
     // ...mapGetters({
     //   askItems: 'getAsks',
     // })

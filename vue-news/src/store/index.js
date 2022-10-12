@@ -16,6 +16,7 @@ export const store = new Vuex.Store({
     news: [],
     jobs: [],
     asks: [],
+    user: [],
   },
 
   // mutations: 자바로 치면 setter(값을 바꿔준다)

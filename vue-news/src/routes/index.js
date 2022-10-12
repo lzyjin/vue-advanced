@@ -10,7 +10,7 @@ Vue.use(VueRouter);
 
 export const router = new VueRouter({
     // mode history는 url에 #(해쉬값)이 붙지 않도록 함
-    // mode:'history',
+    mode:'history',
     routes: [
         {
             path: '/',
@@ -35,7 +35,11 @@ export const router = new VueRouter({
             component: ItemView,
         },
         {
-            path: '/user',
+            path: '/user/:id', // Dynamic Route Matching
+            // 동적 세그먼트는 콜론(:)으로 표시한다.
+            // 라우트가 일치하면 동적 세그먼트의 값은 모든 컴포넌트에서 this.$route.params로 표시된다.
+            // 동일한 라우트에서 여러 동적 세그먼트를 가질 수 있다.
+            // ex) /user/:username/post/:post_id -> /user/evan/post/123 -> { username: 'evan', post_id: '123 }
             component: UserView,
         },
     ]

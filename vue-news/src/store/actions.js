@@ -1,6 +1,6 @@
 // store 속성 모듈화
 
-import {fetchAskList, fetchJobList, fetchNewsList} from "@/api";
+import {fetchAskList, fetchJobList, fetchNewsList, fetchUserList} from "@/api";
 
 export default {
     // 아래 코드를 이렇게 적을 수 있다.
@@ -44,6 +44,18 @@ export default {
 
                 commit('SET_ASK', data);
             })
+            .catch(err => {
+                console.log(err);
+            });
+    },
+
+    FETCH_USER({commit}, payload) {
+        fetchUserList(payload.userName)
+            .then( ({ data }) => {
+                console.log(data);
+
+                commit('SET_USER', data);
+            } )
             .catch(err => {
                 console.log(err);
             });
