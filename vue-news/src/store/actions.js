@@ -1,12 +1,21 @@
 // store 속성 모듈화
 
-import {fetchAskList, fetchJobList, fetchNewsList, fetchUserList} from "@/api";
+import {
+    fetchAskList,
+    fetchJobList,
+    fetchNewsList,
+    fetchUserList,
+    fetchItem,
+} from "@/api";
 
 export default {
     // 아래 코드를 이렇게 적을 수 있다.
     // fetchNews({commit}){
     //
     // },
+
+    // Action handlers receive a context object which exposes the same set of methods/properties on the store instance
+    // so you can call context.commit to commit a mutation, or access the state and getters via 'context.state' and 'context.getters'
     FETCH_NEWS(context) {
         fetchNewsList()
             .then( response => {
@@ -56,6 +65,18 @@ export default {
 
                 commit('SET_USER', data);
             } )
+            .catch(err => {
+                console.log(err);
+            });
+    },
+
+    FETCH_ITEM({commit}, payload) {
+        fetchItem(payload.itemId)
+            .then(({data}) => {
+                console.log(data);
+
+                commit('SET_ITEM', data);
+            })
             .catch(err => {
                 console.log(err);
             });

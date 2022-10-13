@@ -4,7 +4,11 @@
     <!-- RouterView는 -->
     <!-- url이 만약 /news 이면 NewsView로 -->
     <!-- url이 만약 /jobs 이면 JobsView로 랜더링된다. -->
-    <router-view></router-view>
+
+<!--    https://vuejs.org/guide/built-ins/transition.html-->
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -47,4 +51,13 @@ p.item { padding: 30px; border: 1px solid #ddd; border-radius: 10px; margin: 20p
 p.item a { display: block; color: #333; text-decoration: none; font-size: 18px; margin-bottom: 10px; }
 p.item a:hover { text-decoration: underline; }
 p.item span { font-size: 16px; color: #555; display: inline-block; margin-right: 15px; }
+
+// https://vuejs.org/guide/built-ins/transition.html
+/* router transition */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
+}
 </style>

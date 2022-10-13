@@ -20,13 +20,17 @@ function fetchAskList() {
 function fetchUserList(userName) {
     return axios.get(`${config.baseUrl}user/${userName}.json`);
 }
+function fetchItem(itemId) {
+    return axios.get(`${config.baseUrl}item/${itemId}.json`);
+}
 
 // 3. API 함수를 export(현재 이 파일의 외부에서 사용할 수 있게)
 export {
     fetchNewsList,
     fetchJobList,
     fetchAskList,
-    fetchUserList
+    fetchUserList,
+    fetchItem,
 }
 
 

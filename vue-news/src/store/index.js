@@ -17,6 +17,7 @@ export const store = new Vuex.Store({
     jobs: [],
     asks: [],
     user: [],
+    item: [],
   },
 
   // mutations: 자바로 치면 setter(값을 바꿔준다)
@@ -24,12 +25,19 @@ export const store = new Vuex.Store({
     mutations,
 
   // getters: computed와 동일한 속성인데 store에 있는 거라고 생각하자
+  // Vuex allows us to define "getters" in the store.
+  // You can think of them as computed properties for stores.
+  // Like computed properties, a getter's result is cached based on its dependencies,
+  // and will only re-evaluate when some of its dependencies have changed.
   getters:{
     getNews(state){
       return state.news;
     },
     getAsks(state) {
       return state.asks;
+    },
+    fetchedItem(state) {
+      return state.item;
     }
   },
 
