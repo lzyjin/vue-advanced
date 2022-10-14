@@ -3,14 +3,17 @@
     <!--<div v-for="news in newses" v-bind:key="news.id">{{ news.title }}</div>-->
     <!--<div v-for="news in this.$store.state.news" v-bind:key="news.id">{{ news.title }}</div>-->
 
-    <p class="item" v-for="item in this.$store.state.news" v-bind:key="item.id">
-      <a v-bind:href="item.url">
-        {{ item.title }}
-      </a>
-      <!--<span>by <router-link v-bind:to="'/user/' + item.user">{{ item.user }}</router-link></span>-->
-      <span>by <router-link v-bind:to="`/user/${item.user}`">{{ item.user }}</router-link></span>
-      <span>{{ item.time_ago }}</span>
-    </p>
+    <ul>
+      <li class="post" v-for="item in this.$store.state.news" v-bind:key="item.id">
+        <a v-bind:href="item.url" class="title">
+          {{ item.title }}
+        </a>
+        <span class="point">{{ item.points }} point</span>
+        <!--<span>by <router-link v-bind:to="'/user/' + item.user">{{ item.user }}</router-link></span>-->
+        <span>by <router-link v-bind:to="`/user/${item.user}`">{{ item.user }}</router-link></span>
+        <span>{{ item.time_ago }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 

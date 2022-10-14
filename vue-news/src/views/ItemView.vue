@@ -6,9 +6,9 @@
 
     <div>
       <!-- 질문 상세 정보 -->
-      <section>
-        <p>{{ fetchedItem.title }}</p>
-        <div v-html="fetchedItem.content"></div>
+      <section class="item">
+        <p class="title">{{ fetchedItem.title }}</p>
+        <div v-html="fetchedItem.content" class="content"></div>
         <router-link :to="`/user/${ fetchedItem.user }`">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           {{ fetchedItem.user }}
@@ -17,7 +17,7 @@
 
       <!-- 질문에 달린 댓글 -->
       <section>
-        <div v-for="comment in fetchedItem.comments" :key="comment.id">
+        <div v-for="comment in fetchedItem.comments" :key="comment.id" class="comment">
           <div v-html="comment.content"></div>
           <p>{{ comment.time_ago }}</p>
           <router-link :to="`/user/${ comment.user }`">
@@ -55,5 +55,10 @@ export default {
 </script>
 
 <style scoped>
-
+/*
+.item { margin-bottom: 100px; }
+.item .title { font-size: 30px; }
+.item .content { font-size: 20px; }
+.comment { padding: 30px; border: 1px solid #ddd; border-radius: 10px; margin: 20px; }
+ */
 </style>

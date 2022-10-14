@@ -13,13 +13,16 @@
     <!-- 3 -->
     <!--<div v-for="ask in askItems" v-bind:key="ask.id">{{ask.title}}</div>-->
 
-    <p class="item" v-for="ask in getAsks" :key="ask.id">
-      <!--<a :href="`/item/${ask.id}`">{{ ask.title }}</a>-->
-      <!-- a 태그 사용하지 말고 router-link를 사용하자. 히스토리 스택이 망가진다 -->
-      <router-link :to="`/item/${ask.id}`">{{ ask.title }}</router-link>
+    <ul>
+      <li class="post" v-for="ask in getAsks" :key="ask.id">
+        <!--<a :href="`/item/${ask.id}`">{{ ask.title }}</a>-->
+        <!-- a 태그 사용하지 말고 router-link를 사용하자. 히스토리 스택이 망가진다 -->
+        <router-link :to="`/item/${ask.id}`" class="title">{{ ask.title }}</router-link>
 
-      <span>{{ ask.user }}</span>
-    </p>
+        <span><router-link :to="`/item/${ask.id}`">{{ ask.user }}</router-link></span>
+        <span>{{ ask.time_ago }}</span>
+      </li>
+    </ul>
 
   </div>
 </template>

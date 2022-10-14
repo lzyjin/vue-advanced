@@ -4,13 +4,15 @@
 
     <!--<div v-for="job in this.$store.state.jobs" v-bind:key="job.id">{{job.title}}</div>-->
 
-    <p class="item" v-for="item in this.$store.state.jobs" v-bind:key="item.id">
-      <a :href="item.url">
-        {{ item.title }}
-      </a>
-      <span>{{ item.domain }}</span>
-      <span>{{ item.time_ago }}</span>
-    </p>
+    <ul>
+      <li class="post" v-for="job in this.$store.state.jobs" v-bind:key="job.id">
+        <router-link :to="job.url" class="title">{{ job.title }}</router-link>
+<!--        <span v-if="job.domain"><a :href="job.domain" target="_blank">{{ job.domain }}</a></span>-->
+<!--        <span v-if="job.domain"><a :href="'https://'+job.domain" target="_blank">{{ job.domain }}</a></span>-->
+        <span v-if="job.domain"><a :href="job.url" target="_blank">{{ job.domain }}</a></span>
+        <span>{{ job.time_ago }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
