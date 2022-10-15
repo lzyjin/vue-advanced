@@ -3,21 +3,24 @@
     <!--<div v-for="news in newses" v-bind:key="news.id">{{ news.title }}</div>-->
     <!--<div v-for="news in this.$store.state.news" v-bind:key="news.id">{{ news.title }}</div>-->
 
-    <ul>
-      <li class="post" v-for="item in this.$store.state.news" v-bind:key="item.id">
-        <a v-bind:href="item.url" class="title">
-          {{ item.title }}
-        </a>
-        <span class="point">{{ item.points }} point</span>
-        <!--<span>by <router-link v-bind:to="'/user/' + item.user">{{ item.user }}</router-link></span>-->
-        <span>by <router-link v-bind:to="`/user/${item.user}`">{{ item.user }}</router-link></span>
-        <span>{{ item.time_ago }}</span>
-      </li>
-    </ul>
+<!--    <ul>-->
+<!--      <li class="post" v-for="item in this.$store.state.news" v-bind:key="item.id">-->
+<!--        <a v-bind:href="item.url" class="title">{{ item.title }}</a>-->
+<!--        <span class="point">{{ item.points || 0 }} point</span>-->
+<!--        <span>by <router-link v-bind:to="`/user/${item.user}`">{{ item.user }}</router-link></span>-->
+<!--        <span>{{ item.time_ago }}</span>-->
+<!--      </li>-->
+<!--    </ul>-->
+
+    <!-- 공통 컴포넌트로 분리 -->
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
+import ListItem from "@/components/ListItem";
+
+
 // views 폴더에는 라우팅에 관련된 페이지 컴포넌트만 있는 것이 좋다. (라우팅 정보만 담고 있는게 좋다. 데이터 통신하는 부분은 별도의 컴포넌트로 분리)
 
 // https://axios-http.com/docs/intro
@@ -47,6 +50,12 @@
 // --- api 폴더로 분리 후
 // import {fetchNewsList} from "@/api/index.js";
 export default {
+
+  // ListItem 컴포넌트로 분리 후
+  components: {
+    ListItem
+  },
+
   // vuex 사용 후 (newses 데이터는 필요 없어짐)
   /*
   data() {
@@ -66,7 +75,7 @@ export default {
 
 
     // vuex 사용 후
-    this.$store.dispatch('FETCH_NEWS');
+    // this.$store.dispatch('FETCH_NEWS');
     // this는 vue 자체
 
 

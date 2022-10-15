@@ -13,24 +13,27 @@
     <!-- 3 -->
     <!--<div v-for="ask in askItems" v-bind:key="ask.id">{{ask.title}}</div>-->
 
-    <ul>
-      <li class="post" v-for="ask in getAsks" :key="ask.id">
-        <!--<a :href="`/item/${ask.id}`">{{ ask.title }}</a>-->
-        <!-- a 태그 사용하지 말고 router-link를 사용하자. 히스토리 스택이 망가진다 -->
-        <router-link :to="`/item/${ask.id}`" class="title">{{ ask.title }}</router-link>
+<!--    <ul>-->
+<!--      <li class="post" v-for="ask in getAsks" :key="ask.id">-->
+<!--        &lt;!&ndash;<a :href="`/item/${ask.id}`">{{ ask.title }}</a>&ndash;&gt;-->
+<!--        &lt;!&ndash; a 태그 사용하지 말고 router-link를 사용하자. 히스토리 스택이 망가진다 &ndash;&gt;-->
+<!--        <router-link :to="`/item/${ask.id}`" class="title">{{ ask.title }}</router-link>-->
 
-        <span><router-link :to="`/item/${ask.id}`">{{ ask.user }}</router-link></span>
-        <span>{{ ask.time_ago }}</span>
-      </li>
-    </ul>
+<!--        <span><router-link :to="`/item/${ask.id}`">{{ ask.user }}</router-link></span>-->
+<!--        <span>{{ ask.time_ago }}</span>-->
+<!--      </li>-->
+<!--    </ul>-->
 
+    <!-- 공통 컴포넌트로 분리 -->
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
 // import {fetchAskList} from "@/api";
 // import { mapState } from 'vuex';
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
+import ListItem from "@/components/ListItem";
 
 export default {
   name: "AskView",
@@ -38,6 +41,9 @@ export default {
     return {
       // asks: []
     }
+  },
+  components: {
+    ListItem
   },
   computed: {
     // 1
@@ -60,9 +66,9 @@ export default {
     //   askItems: 'getAsks',
     // })
     // 또는
-    ...mapGetters([
-      'getAsks',
-    ])
+    // ...mapGetters([
+    //   'getAsks',
+    // ])
   },
   created() {
     // fetchAskList()
@@ -72,7 +78,7 @@ export default {
     //     })
     //     .catch(err => console.error(err));
 
-    this.$store.dispatch('FETCH_ASK');
+    // this.$store.dispatch('FETCH_ASK');
   }
 }
 </script>
