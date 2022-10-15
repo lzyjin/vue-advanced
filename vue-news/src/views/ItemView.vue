@@ -1,9 +1,5 @@
 <template>
   <div>
-<!--    <p>{{ itemInfo.title }}</p>-->
-<!--    <p>{{ itemInfo.content }}</p>-->
-<!--    <p>{{ itemInfo.user }}</p>-->
-
     <div>
       <!-- 질문 상세 정보 -->
       <section class="detail">
@@ -14,12 +10,7 @@
 
       <!-- 사용자 정보 -->
       <section class="user-info">
-<!--        <router-link :to="`/user/${ fetchedItem.user }`">-->
-<!--          <i class="fa fa-user-circle-o" aria-hidden="true"></i>-->
-<!--          {{ fetchedItem.user }}-->
-<!--        </router-link>-->
         <user-profile :info="fetchedItem">
-<!--          <div slot="username">by {{ fetchedItem.user }}</div>-->
           <p slot="username">
             by <router-link :to="`/user/${ fetchedItem.user }`">{{ fetchedItem.user }}</router-link>
           </p>
@@ -59,12 +50,6 @@ export default {
     UserProfile
   },
   computed: {
-    // itemInfo() {
-    //   return this.$store.state.item;
-    // }
-
-    // mapGetters 헬퍼 사용
-    // The mapGetters helper simply maps store getters to local computed properties:
     ...mapGetters([
       'fetchedItem'
     ]),

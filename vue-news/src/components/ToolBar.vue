@@ -4,9 +4,6 @@
       <router-link to="/news">news</router-link> |
       <router-link to="/ask">ask</router-link> |
       <router-link to="/jobs">jobs</router-link>
-      <!--<router-link to="/item">item</router-link> |-->
-      <!--<router-link to="/user">user</router-link>-->
-      <!--<routes-link>는 a태그로 렌더링된다-->
     </div>
   </div>
 </template>
