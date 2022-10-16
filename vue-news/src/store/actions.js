@@ -1,46 +1,12 @@
 // store 속성 모듈화
 
 import {
-    fetchAskList,
-    fetchJobList,
-    fetchNewsList,
     fetchUserList,
     fetchItem,
+    fetchList,
 } from "@/api";
 
 export default {
-
-    FETCH_NEWS(context) {
-        fetchNewsList()
-            .then( response => {
-                context.commit('SET_NEWS', response.data);
-            } )
-            .catch(err => {
-                console.log(err);
-            })
-    },
-
-    // 디스트럭처링
-    FETCH_JOB({ commit }) {
-        fetchJobList()
-            .then(({ data }) => {
-                commit('SET_JOB', data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    },
-
-    FETCH_ASK({ commit }) {
-        fetchAskList()
-            .then(({ data }) => {
-                commit('SET_ASK', data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    },
-
     FETCH_USER({commit}, payload) {
         fetchUserList(payload.userName)
             .then( ({ data }) => {
@@ -59,5 +25,15 @@ export default {
             .catch(err => {
                 console.log(err);
             });
-    }
+    },
+
+    FETCH_LIST({commit}, pageName) {
+        fetchList(pageName)
+            .then(({data}) => {
+                commit('SET_LIST', data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    },
 }

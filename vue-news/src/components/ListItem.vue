@@ -32,16 +32,7 @@ export default {
   name: "ListItem",
   computed: {
     listItems() {
-      const routeName = this.$route.name;
-      if (routeName === 'news') {
-        return this.$store.state.news;
-      } else if (routeName === 'ask') {
-        return this.$store.state.asks;
-      } else if (routeName === 'jobs') {
-        return this.$store.state.jobs; // 이대로 하면 나는 에러남;; if문 밖에서 return 해줘야함
-      } else {
-        return null;
-      }
+      return this.$store.state.list;
     },
   },
 }

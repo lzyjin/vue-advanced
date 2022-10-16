@@ -1,20 +1,17 @@
 <template>
-  <div>
-    <list-item></list-item>
-  </div>
+  <list-item></list-item>
 </template>
 
 <script>
 import ListItem from "@/components/ListItem";
-import ListMixin from "@/mixins/ListMixin";
 
 export default {
+  name: "ListView",
   components: {
     ListItem,
   },
-  mixins: [ListMixin],
-}
 
+}
 </script>
 
 <style scoped>
