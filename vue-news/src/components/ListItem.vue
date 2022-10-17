@@ -47,31 +47,5 @@ export default {
 .post span a { color: #555; }
 .post span::after { content: ''; position: absolute; right: 0; top: 7px; width: 2px; height: 2px; border-radius: 50%; background: #555; }
 .post span:last-of-type::after { display: none; }
-/* router transition */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .5s linear;
-}
-.fade-enter,
-.fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0;
-}
-
-/* https://dev.to/arielmejiadev/slide-effect-on-vuejs-3247 */
-/* style 태그 안에서 // 로 주석처리하면 에러남 !!! */
-.slide-enter-active,
-.slide-leave-enter {
-  transform: translateX(0);
-  transition: all .3s linear;
-}
-.slide-enter {
-  transform: translateX(100%);
-}
-.slide-leave-to {
-  transform: translateX(-100%);
-}
-
-/* https://learnvue.co/tutorials/vue-router-transitions */
-/* 더 복잡한 코드 */
 
 </style>

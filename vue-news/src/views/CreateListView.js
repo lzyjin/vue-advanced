@@ -13,7 +13,11 @@ export default function createListView(name) {
         created() {
             bus.$emit('start:spinner');
             this.$store.dispatch('FETCH_LIST', this.$route.name)
+                // FETCH_LIST함수로부터 return으로 결과 값을 넘겨받아야 then으로 체이닝을 할 수 있다.
                 .then(() => {
+
+                    // # 6
+                    console.log('fetched');
                     bus.$emit('end:spinner');
                 })
                 .catch(err => {
