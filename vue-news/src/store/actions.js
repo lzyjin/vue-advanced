@@ -29,9 +29,30 @@ export default {
 
     // #2
     FETCH_LIST({commit}, pageName) {
+        console.log("OUTER", fetchList(pageName).then(response=>{
+            console.log("INNER",response.data)
+            return response
+        }));
+
+//dispatch FETCH_LIST -> axios(async) fetchList ->>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//                                      dispath fininsh ->  then
+
+
+        /**
+         * 1. 프로미스 다음에 붙은 then은 프로미스가 끝나면 무조건 실행된다.
+         * 2.then은 Promise를 반환한다.
+         */
+
+
+        /**
+         *  aMethod
+         *  bMethod
+         *  cMethod
+         *
+         */
 
         // #3
-        return fetchList(pageName) // 안에서도 return 하고 밖에서도 return?????
+        return fetchList(pageName)
         // fetchList(pageName) // 이 코드로는 ListMixin에서 .then으로 받은 코드가 원하는 순서대로 실행되지 않는다. ( 5 -> 4 순서로 출력됌)
 
             .then(response => {
@@ -43,5 +64,7 @@ export default {
             .catch(err => {
                 console.log(err);
             });
+
+
     },
 }

@@ -7,9 +7,10 @@ export default {
 
         // #1 데이터 호출
         this.$store.dispatch('FETCH_LIST', this.$route.name)
-            .then(() => {
+            .then((res) => {
                 // #5
                 console.log(5);
+                console.log('listmixin에서', res);
                 console.log('fetched');
                 bus.$emit('end:spinner');
             })
