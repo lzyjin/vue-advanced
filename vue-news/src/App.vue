@@ -2,9 +2,9 @@
   <div id="app">
     <tool-bar></tool-bar>
     <div class="content">
-      <transition name="fade">
+<!--      <transition name="fade">-->
         <router-view></router-view>
-      </transition>
+<!--      </transition>-->
       <spinner :loading="loadingState"></spinner>
     </div>
   </div>

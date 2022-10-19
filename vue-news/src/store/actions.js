@@ -29,26 +29,14 @@ export default {
 
     // #2
     FETCH_LIST({commit}, pageName) {
-        console.log("OUTER", fetchList(pageName).then(response=>{
-            console.log("INNER",response.data)
-            return response
-        }));
-
-//dispatch FETCH_LIST -> axios(async) fetchList ->>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//                                      dispath fininsh ->  then
-
+        // console.log("OUTER", fetchList(pageName).then(response=>{
+        //     console.log("INNER",response.data)
+        //     return response
+        // }));
 
         /**
          * 1. 프로미스 다음에 붙은 then은 프로미스가 끝나면 무조건 실행된다.
          * 2.then은 Promise를 반환한다.
-         */
-
-
-        /**
-         *  aMethod
-         *  bMethod
-         *  cMethod
-         *
          */
 
         // #3
@@ -58,6 +46,8 @@ export default {
             .then(response => {
                 // #4 데이터 설정
                 console.log(4);
+                console.log('pageName', pageName);
+                console.log('response', response);
                 commit('SET_LIST', response.data);
                 return response;
             })
