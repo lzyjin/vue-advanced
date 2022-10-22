@@ -27,6 +27,9 @@ export default {
             });
     },
 
+
+    // promise 사용 ------------------------------
+    /*
     // #2
     FETCH_LIST({commit}, pageName) {
         // console.log("OUTER", fetchList(pageName).then(response=>{
@@ -34,10 +37,10 @@ export default {
         //     return response
         // }));
 
-        /**
-         * 1. 프로미스 다음에 붙은 then은 프로미스가 끝나면 무조건 실행된다.
-         * 2.then은 Promise를 반환한다.
-         */
+
+        // 1. 프로미스 다음에 붙은 then은 프로미스가 끝나면 무조건 실행된다.
+        // 2.then은 Promise를 반환한다.
+
 
         // #3
         return fetchList(pageName)
@@ -49,12 +52,23 @@ export default {
                 console.log('pageName', pageName);
                 console.log('response', response);
                 commit('SET_LIST', response.data);
-                return response;
+                return response; // promise를 return해야만 함수를 호출한 곳에서 .then().catch()...로 체이닝 할 수 있다.
             })
             .catch(err => {
                 console.log(err);
             });
 
-
     },
+     */
+
+    // async, await 사용 ------------------------------
+    async FETCH_LIST({commit}, pageName) {
+        try {
+            const response = await fetchList(pageName);
+            commit('SET_LIST', response.data);
+            return response;
+        } catch (e) {
+            console.log(e);
+        }
+    }
 }
