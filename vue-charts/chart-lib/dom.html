@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app" ref="app">hello</div>
+
+    <script>
+        // html의 DOM에 접근하는 방법
+        var divElement = document.querySelector('#app');
+        var divElement = document.getElementById('app');
+        var divElement = $('#app');
+
+        // vue에서는
+        var divElement = this.$refs.app;
+    </script>
+</body>
+</html>
